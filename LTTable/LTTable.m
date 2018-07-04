@@ -19,7 +19,7 @@
 
 -(void) awakeFromNib{
     [super awakeFromNib];
-    
+    [self initialize];
 }
 
 -(id) init{
