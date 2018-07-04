@@ -34,4 +34,9 @@ typedef void(^LTTableDidSelectRowHandler)(LTTable *tableView, NSIndexPath *index
 
 @property (nonatomic , copy , nullable) LTTableDidSelectRowHandler didSelectRowHandler;
 
+/**
+    是否选中后，自动恢复。默认NO
+ */
+@property(nonatomic, assign) BOOL deSelectWhenSelected;
+
 @end

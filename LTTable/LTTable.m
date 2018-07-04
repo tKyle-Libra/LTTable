@@ -119,14 +119,14 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LTSectionObject *s = self.sections[indexPath.row];
+    LTSectionObject *s = self.sections[indexPath.section];
     LTCellObject *c = s.cells[indexPath.row];
     CGFloat height = c.size.height;
     return height;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LTSectionObject *s = self.sections[indexPath.row];
+    LTSectionObject *s = self.sections[indexPath.section];
     LTCellObject *c = s.cells[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:c.registerClass.key];
     if(!cell) {
@@ -159,7 +159,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    LTSectionObject *s = self.sections[indexPath.row];
+    LTSectionObject *s = self.sections[indexPath.section];
     LTCellObject *c = s.cells[indexPath.row];
     if(c.target && c.selectorString) {
         SEL selector = NSSelectorFromString(c.selectorString);
@@ -174,6 +174,7 @@
 #pragma mark getters and setters
 
 -(void) setSections:(NSMutableArray<LTSectionObject *> *)sections{
+    _sections = sections;
     for (LTSectionObject *s in sections) {
         if(!s.header) {
             s.header = [self defaultHeaderFooter];

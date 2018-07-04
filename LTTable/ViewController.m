@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LTTable.h"
+#import "LTDataSource.h"
 
 @interface ViewController ()
 
@@ -19,19 +20,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self.view addSubview:self.tableView];
+    NSMutableArray *arr = [NSMutableArray array];
+    for (NSInteger index = 0 ; index < 100 ; index++) {
+        LTCellObject *co = [[LTCellObject alloc] init];
+        co.text = [NSString stringWithFormat:@"text = %ld",index];
+        co.size = CGSizeMake(0, 44);
+        co.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10);
+        co.selectionStyle = UITableViewCellSelectionStyleNone;
+        [arr addObject:co];
+    }
+    LTSectionObject *so = [LTSectionObject sectionWithCells:arr];
+    _tableView.sections = [@[so] mutableCopy];
+    [_tableView reloadData];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 -(LTTable *) tableView{
     if (!_tableView) {
-        _tableView = [[LTTable alloc] init];
+        _tableView = [[LTTable alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.separatorColor = [UIColor redColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
     return _tableView;
 }
