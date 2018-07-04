@@ -158,6 +158,14 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section{
+    
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section{
+    
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     LTSectionObject *s = self.sections[indexPath.section];
     LTCellObject *c = s.cells[indexPath.row];
@@ -171,6 +179,21 @@
         self.didSelectRowHandler(self, indexPath);
     }
 }
+
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    if(self.sectionIndexTitlesHandler) {
+        return self.sectionIndexTitlesHandler(self);
+    }
+    return nil;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    if(self.sectionForSectionIndexTitleHandler) {
+        return self.sectionForSectionIndexTitleHandler(self, title, index);
+    }
+    return index;
+}
+
 #pragma mark getters and setters
 
 -(void) setSections:(NSMutableArray<LTSectionObject *> *)sections{

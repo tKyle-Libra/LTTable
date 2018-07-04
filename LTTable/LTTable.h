@@ -13,11 +13,10 @@
 
 //typedef BOOL(^LTTableCanEditRowHandler)(LTTable *tableView, NSIndexPath *indexPath);
 //typedef NSArray<UITableViewRowAction *> * _Nullable (^LTTableEditForRowActionHandler)(LTTable *tableView, NSIndexPath *indexPath);
-//typedef NSArray<NSString *> * _Nullable (^LTTableSectionIndexTitlesHandler)(LTTable *tableView);
 //typedef void(^LTTableMoveRowCompletedHandler)(LTTable *tableView, NSIndexPath *sourceIndexPath, NSIndexPath *destinationIndexPath);
-//typedef NSInteger(^LTTableSectionForSectionIndexTitleHandler)(LTTable *tableView, NSString *title, NSInteger index);
 
-
+typedef NSInteger(^LTTableSectionForSectionIndexTitleHandler)(LTTable *tableView, NSString *title, NSInteger index);
+typedef NSArray<NSString *> * _Nullable (^LTTableSectionIndexTitlesHandler)(LTTable *tableView);
 typedef void(^LTTableWillDisplayCellHandler)(LTTable *tableView, UITableViewCell *cell, NSIndexPath *indexPath);
 typedef void(^LTTableDidSelectRowHandler)(LTTable *tableView, NSIndexPath *indexPath);
 
@@ -33,6 +32,10 @@ typedef void(^LTTableDidSelectRowHandler)(LTTable *tableView, NSIndexPath *index
 @property (nonatomic , copy , nullable) LTTableWillDisplayCellHandler willDisplayCellHandler;
 
 @property (nonatomic , copy , nullable) LTTableDidSelectRowHandler didSelectRowHandler;
+
+@property (nonatomic , copy , nullable) LTTableSectionIndexTitlesHandler sectionIndexTitlesHandler;
+
+@property (nonatomic , copy , nullable) LTTableSectionForSectionIndexTitleHandler sectionForSectionIndexTitleHandler;
 
 /**
     是否选中后，自动恢复。默认NO
