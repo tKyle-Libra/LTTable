@@ -48,16 +48,22 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong , nonatomic , nullable) NSString *selectorString;
 
-@property(nonatomic, strong, nullable) NSString *text;
-@property(nonatomic, strong, nullable) NSString *detailText;
+@property (nonatomic , strong, nullable) NSString *text;
+@property(nonatomic , strong, nullable) NSString *detailText;
 /**
  本地图片资源名
  */
-@property(nonatomic, strong, nullable) NSString *imageName;
-@property(nonatomic, assign) UITableViewCellAccessoryType accessoryType;
-@property(nonatomic, strong, nullable) UIView *accessoryView;
-@property(nonatomic, assign) UITableViewCellStyle style;
-@property(nonatomic, assign) UITableViewCellSelectionStyle selectionStyle;
+@property (nonatomic , strong , nullable) NSString *imageName;
+@property (nonatomic , assign) UITableViewCellAccessoryType accessoryType;
+@property (nonatomic , strong, nullable) UIView *accessoryView;
+/**
+    必须设置LTTable separatorStyle为UITableViewCellSeparatorStyleSingleLine，否则不生效
+    设置LTTable separatorColor
+ */
+@property (nonatomic , assign) UIEdgeInsets separatorInset;
+@property (nonatomic , assign) UITableViewCellStyle style;
+@property (nonatomic , assign) UITableViewCellSelectionStyle selectionStyle;
+
 
 
 

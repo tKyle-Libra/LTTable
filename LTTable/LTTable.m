@@ -68,6 +68,13 @@
     super.dataSource = self;
 }
 
+-(LTHeaderFooterObject*)defaultHeaderFooter {
+    LTHeaderFooterObject *headerFooter = [[LTHeaderFooterObject alloc] init];
+    headerFooter.size = self.style == UITableViewStylePlain?CGSizeZero:CGSizeMake(0, 0.1);
+    headerFooter.registerClass = [LTKeyValueItem itemWithKey:LTTableDefaultHeaderFooterIdentifier value:[UITableViewHeaderFooterView class]];
+    return headerFooter;
+}
+
 #pragma mark UITableViewDelegate or UITableViewDataSource
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -130,6 +137,12 @@
     cell.detailTextLabel.text = c.detailText;
     cell.selectionStyle = c.selectionStyle;
     cell.accessoryType = c.accessoryType;
+    if (c.accessoryType == UITableViewCellAccessoryDisclosureIndicator) {
+        c.accessoryView = c.accessoryView;
+    }
+    if (tableView.separatorStyle == UITableViewCellSeparatorStyleSingleLine) {
+        cell.separatorInset = c.separatorInset;
+    }
     if(c.imageName) {
         cell.imageView.image = [UIImage imageNamed:c.imageName];
     } else {
@@ -154,14 +167,42 @@
             ((void (*)(void *, SEL, NSIndexPath*))objc_msgSend)((__bridge void *)(c.target), selector, indexPath);
         }
     }
-//    if(self.deSelectWhenSelected) {
-//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    }
     if(self.didSelectRowHandler) {
         self.didSelectRowHandler(self, indexPath);
     }
 }
 #pragma mark getters and setters
 
+-(void) setSections:(NSMutableArray<LTSectionObject *> *)sections{
+    for (LTSectionObject *s in sections) {
+        if(!s.header) {
+            s.header = [self defaultHeaderFooter];
+        } else {
+            if(!s.header.registerClass) {
+                s.header.registerClass = [LTKeyValueItem itemWithKey:LTTableDefaultHeaderFooterIdentifier value:[UITableViewHeaderFooterView class]];
+            } else {
+                [self registerClass:s.header.registerClass.value forHeaderFooterViewReuseIdentifier:s.header.registerClass.key];
+            }
+        }
+        
+        if(!s.footer) {
+            s.footer = [self defaultHeaderFooter];
+        } else {
+            if(!s.footer.registerClass) {
+                s.footer.registerClass = [LTKeyValueItem itemWithKey:LTTableDefaultHeaderFooterIdentifier value:[UITableViewHeaderFooterView class]];
+            } else {
+                [self registerClass:s.footer.registerClass.value forHeaderFooterViewReuseIdentifier:s.footer.registerClass.key];
+            }
+        }
+        
+        if(s.cells) {
+            for (LTCellObject *c in s.cells) {
+                if(!c.registerClass) {
+                    c.registerClass = [LTKeyValueItem itemWithKey:LTTableDefaultCellIdentifier value:[UITableViewCell class]];
+                }
+            }
+        }
+    }
+}
 
 @end

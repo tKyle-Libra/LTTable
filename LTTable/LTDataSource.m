@@ -48,7 +48,6 @@ NSString *const LTCollectionDefaultFooterIdentifier = @"LTCollectionDefaultFoote
     obj.style = self.style;
     obj.selectionStyle = self.selectionStyle;
     obj.accessoryType = self.accessoryType;
-    obj.isScroller = self.isScroller;
     obj.registerClass = self.registerClass;
     obj.size = self.size;
     obj.data = self.data;
