@@ -4,9 +4,9 @@ s.version = "0.1"
 s.summary = ""
 s.homepage = "https://github.com/tKyle-Libra/"
 s.license = "MIT" //这里就选这个许可证
-s.author ={"harry" =&gt; "tkyle1016@yeah.net"}
+s.author ={"harry" => "tkyle1016@yeah.net"}
 s.platform =iOS,"8.0"
-s.source ={git =&gt;"https://github.com/tKyle-Libra/LTTable.git",tag =&gt;"0.0.1"}
+s.source ={git =>"https://github.com/tKyle-Libra/LTTable.git",tag =>"0.0.1"}
 s.source_files = "text/*/.(h.m)" //这里是项目路径要传的文件
 s.framework ="UIKit" //依赖的系统库 可以依赖多个
 // 若需要依赖其他开源的第三方库 可以写成下列形式 若需要有多个就复制下面代码 添加第三方库
@@ -18,5 +18,5 @@ s.framework ="UIKit" //依赖的系统库 可以依赖多个
 s.library = 'iconv'// 设置只依赖一个系统的library
 s.libraries = 'iconv', 'xml2' // 设置依赖多个系统的library
 // 这里是工程配置，这样使用者就不需要手动处理，由pod自动处理了
-s.xcconfig = {'HEADER_SEARCH_PATHS' =&gt;'$(SDKROOT)/usr/include/libxml2'}
+s.xcconfig = {'HEADER_SEARCH_PATHS' =>'$(SDKROOT)/usr/include/libxml2'}
 
