@@ -35,7 +35,7 @@ NSString *const LTCollectionDefaultFooterIdentifier = @"LTCollectionDefaultFoote
         self.style = UITableViewCellStyleDefault;
         self.size = CGSizeZero;
         self.selectionStyle = UITableViewCellSelectionStyleDefault;
-        self.isScroller = YES;
+        self.accessoryType = UITableViewCellAccessoryNone;
     }
     return self;
 }

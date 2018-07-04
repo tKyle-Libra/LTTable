@@ -22,10 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface LTCellObject:NSObject
-/**
- 是否可以移动 默认YES
- */
-@property(nonatomic, assign) BOOL isScroller;
+
 /**
  注册的类，key 为reuseIdentifier
  */
@@ -43,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong , nonatomic , nullable) id data;
 
+
 @property (weak , nonatomic , nullable) id target;
 
 /**
@@ -56,9 +54,12 @@ NS_ASSUME_NONNULL_BEGIN
  本地图片资源名
  */
 @property(nonatomic, strong, nullable) NSString *imageName;
+@property(nonatomic, assign) UITableViewCellAccessoryType accessoryType;
+@property(nonatomic, strong, nullable) UIView *accessoryView;
 @property(nonatomic, assign) UITableViewCellStyle style;
 @property(nonatomic, assign) UITableViewCellSelectionStyle selectionStyle;
-@property(nonatomic, assign) UITableViewCellAccessoryType accessoryType;
+
+
 
 @end
 
