@@ -9,6 +9,7 @@
 #import "LTTable.h"
 #import "LTDataSource.h"
 #import <objc/message.h>
+#import "UITableViewCell+Data.h"
 
 @implementation LTTable
 
@@ -70,7 +71,9 @@
 
 -(LTHeaderFooterObject*)defaultHeaderFooter {
     LTHeaderFooterObject *headerFooter = [[LTHeaderFooterObject alloc] init];
-    headerFooter.size = self.style == UITableViewStylePlain?CGSizeZero:CGSizeMake(0, 0.1);
+    if (headerFooter.size.height <= 0) {
+        headerFooter.size = self.style == UITableViewStylePlain?CGSizeZero:CGSizeMake(0, 0.1);
+    }
     headerFooter.registerClass = [LTKeyValueItem itemWithKey:LTTableDefaultHeaderFooterIdentifier value:[UITableViewHeaderFooterView class]];
     return headerFooter;
 }
@@ -138,7 +141,7 @@
     cell.selectionStyle = c.selectionStyle;
     cell.accessoryType = c.accessoryType;
     if (c.accessoryType == UITableViewCellAccessoryDisclosureIndicator) {
-        c.accessoryView = c.accessoryView;
+        cell.accessoryView = c.accessoryView;
     }
     if (tableView.separatorStyle == UITableViewCellSeparatorStyleSingleLine) {
         cell.separatorInset = c.separatorInset;
@@ -148,7 +151,7 @@
     } else {
         cell.imageView.image = nil;
     }
-    
+    [cell setCellData:c indexPath:indexPath];
     return cell;
 }
 
@@ -175,6 +178,9 @@
             ((void (*)(void *, SEL, NSIndexPath*))objc_msgSend)((__bridge void *)(c.target), selector, indexPath);
         }
     }
+    if (self.deSelectWhenSelected) {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
     if(self.didSelectRowHandler) {
         self.didSelectRowHandler(self, indexPath);
     }
@@ -192,6 +198,14 @@
         return self.sectionForSectionIndexTitleHandler(self, title, index);
     }
     return index;
+}
+
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    LTSectionObject *s = self.sections[section];
+    if (s.header) {
+        return s.header.text;
+    }
+    return @"";
 }
 
 #pragma mark getters and setters

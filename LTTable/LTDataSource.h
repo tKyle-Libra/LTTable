@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LTKeyValueItem<__covariant KeyType, __covariant ObjectType> : NSObject
 
-@property (strong , nonatomic) KeyType key;
+@property (strong , nonatomic,nullable) KeyType key;
 
-@property (strong , nonatomic) ObjectType value;
+@property (strong , nonatomic,nullable) ObjectType value;
 
 +(instancetype) itemWithKey:(KeyType)key value:(ObjectType)value;
 

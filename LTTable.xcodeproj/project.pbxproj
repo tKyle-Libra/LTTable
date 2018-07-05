@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C6A181B20EDEFE20051EC11 /* LTDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B07CE2420EC960700D32056 /* LTDataSource.m */; };
+		1C6A181C20EDEFE20051EC11 /* LTTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B07CE2120EC7BC700D32056 /* LTTable.m */; };
+		1C6A183B20EE143D0051EC11 /* UITableViewCell+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A183A20EE143D0051EC11 /* UITableViewCell+Data.m */; };
+		1C6A183C20EE14420051EC11 /* UITableViewCell+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A183A20EE143D0051EC11 /* UITableViewCell+Data.m */; };
+		1C6A183F20EE160E0051EC11 /* UITableViewCell+Data.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C6A183920EE143D0051EC11 /* UITableViewCell+Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B07CE0C20EC7B9200D32056 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B07CE0B20EC7B9200D32056 /* AppDelegate.m */; };
 		8B07CE0F20EC7B9200D32056 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B07CE0E20EC7B9200D32056 /* ViewController.m */; };
 		8B07CE1220EC7B9200D32056 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B07CE1020EC7B9200D32056 /* Main.storyboard */; };
@@ -47,6 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C6A183920EE143D0051EC11 /* UITableViewCell+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Data.h"; sourceTree = "<group>"; };
+		1C6A183A20EE143D0051EC11 /* UITableViewCell+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Data.m"; sourceTree = "<group>"; };
 		8B07CE0720EC7B9200D32056 /* LTTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B07CE0A20EC7B9200D32056 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B07CE0B20EC7B9200D32056 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -111,6 +118,8 @@
 				8B07CE0D20EC7B9200D32056 /* ViewController.h */,
 				8B07CE0E20EC7B9200D32056 /* ViewController.m */,
 				8B07CE2320EC960700D32056 /* LTDataSource.h */,
+				1C6A183920EE143D0051EC11 /* UITableViewCell+Data.h */,
+				1C6A183A20EE143D0051EC11 /* UITableViewCell+Data.m */,
 				8B07CE2420EC960700D32056 /* LTDataSource.m */,
 				8B07CE2020EC7BC700D32056 /* LTTable.h */,
 				8B07CE2120EC7BC700D32056 /* LTTable.m */,
@@ -139,6 +148,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C6A183F20EE160E0051EC11 /* UITableViewCell+Data.h in Headers */,
 				8B07CE3020ECB38700D32056 /* LTTableView.h in Headers */,
 				8B07CE3920ECB41500D32056 /* LTDataSource.h in Headers */,
 				8B07CE3A20ECB41500D32056 /* LTTable.h in Headers */,
@@ -251,6 +261,7 @@
 				8B07CE0F20EC7B9200D32056 /* ViewController.m in Sources */,
 				8B07CE1A20EC7B9300D32056 /* main.m in Sources */,
 				8B07CE0C20EC7B9200D32056 /* AppDelegate.m in Sources */,
+				1C6A183B20EE143D0051EC11 /* UITableViewCell+Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C6A183C20EE14420051EC11 /* UITableViewCell+Data.m in Sources */,
+				1C6A181B20EDEFE20051EC11 /* LTDataSource.m in Sources */,
+				1C6A181C20EDEFE20051EC11 /* LTTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

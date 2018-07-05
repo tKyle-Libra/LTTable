@@ -18,3 +18,4 @@ FOUNDATION_EXPORT const unsigned char LTTableViewVersionString[];
 
 #import "LTDataSource.h"
 #import "LTTable.h"
+#import "UITableViewCell+Data.h"
