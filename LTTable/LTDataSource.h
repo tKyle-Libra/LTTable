@@ -89,7 +89,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@protocol LTCellProtocol
+@protocol LTDataSourceProtocol
+
+-(void) dataSourceSizeWithData:(id)data indexPath:(NSIndexPath *)indexPath;
 
 @end
 
