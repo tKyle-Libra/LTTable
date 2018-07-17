@@ -10,6 +10,7 @@
 #import "LTDataSource.h"
 #import <objc/message.h>
 #import "UITableViewCell+Data.h"
+#import "UITableViewHeaderFooterView+Data.h"
 
 @implementation LTTable
 
@@ -102,6 +103,7 @@
         identifier = header.key;
     }
     UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
+    [headerView setFillData:s.header indexPath:section];
     return headerView;
 }
 
@@ -117,8 +119,9 @@
         LTKeyValueItem<NSString*, Class> *footer = s.footer.registerClass;
         identifier = footer.key;
     }
-    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
-    return headerView;
+    UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
+    [footerView setFillData:s.footer indexPath:section];
+    return footerView;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
